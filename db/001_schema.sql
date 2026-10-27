@@ -2,11 +2,12 @@
 
 CREATE TABLE IF NOT EXISTS events (
     id          BIGSERIAL PRIMARY KEY,
-    event_id    TEXT        NOT NULL,
+    event_id    TEXT        NOT NULL UNIQUE, -- ADAUGAM UNIQUE sa nu avem evenimente duplicate ( consecinta in /received , vedem de 2 ori)
     type        TEXT        NOT NULL,
     payload     JSONB       NOT NULL,
     status      TEXT        NOT NULL DEFAULT 'pending',
     attempts    INTEGER     NOT NULL DEFAULT 0,
+    locked TIMESTAMPTZ, 
     created_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
     updated_at  TIMESTAMPTZ NOT NULL DEFAULT now()
 );

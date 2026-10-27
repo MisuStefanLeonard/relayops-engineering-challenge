@@ -1,0 +1,1 @@
+{"event_id": "evt-001", "type": "invoice.created", "payload": {"invoice_id": 1234, "amount": 250}}
